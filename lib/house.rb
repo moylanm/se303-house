@@ -1,4 +1,8 @@
 class House
+
+  @@phrases = [
+    
+  ]
   
   def recite
     1.upto(12).map { |n| line(n) }.join("\n")
