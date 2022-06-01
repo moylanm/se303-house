@@ -41,10 +41,9 @@ class House
     end
 
     def randomized_phrases
-      list = @@phrases.drop(1)
-      list = list.shuffle
-      list.insert(0, @@phrases[0])
-      list
+      @@phrases.drop(1)
+      .shuffle
+      .insert(0, @@phrases[0])
     end
 end
 
