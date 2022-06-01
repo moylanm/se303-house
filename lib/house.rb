@@ -15,6 +15,8 @@ class House
     "the horse and the hound and the horn that belonged to",
   ]
 
+  attr_reader :pirate, :random
+
   def initialize(pirate = false, random = false)
     @pirate = pirate
     @random = random
