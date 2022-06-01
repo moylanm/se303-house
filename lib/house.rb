@@ -14,6 +14,11 @@ class House
     "the farmer sowing his corn that kept",
     "the horse and the hound and the horn that belonged to",
   ]
+
+  def initialize(pirate = false, random = false)
+    @pirate = pirate
+    @random = random
+  end
   
   def recite
     1.upto(12).map { |n| line(n) }.join("\n")
@@ -25,11 +30,12 @@ class House
 
   private
 
-  def line_helper(number)
-    if number == 1
-      @@phrases[number - 1]
-    else
-      "#{@@phrases[number - 1]} #{line_helper(number - 1)}"
+    def line_helper(number)
+      if number == 1
+        @@phrases[number - 1]
+      else
+        "#{@@phrases[number - 1]} #{line_helper(number - 1)}"
+      end
     end
-  end
 end
+
