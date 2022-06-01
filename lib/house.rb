@@ -15,11 +15,11 @@ class House
     "the horse and the hound and the horn that belonged to",
   ]
 
-  attr_reader :pirate, :random
+  attr_reader :pirate, :phrases
 
   def initialize(pirate = false, random = false)
     @pirate = pirate
-    @random = random
+    @phrases = random ? randomize_phrases : @@phrases
   end
   
   def recite
@@ -34,10 +34,14 @@ class House
 
     def line_helper(number)
       if number == 1
-        @@phrases[number - 1]
+        phrases[number - 1]
       else
-        "#{@@phrases[number - 1]} #{line_helper(number - 1)}"
+        "#{phrases[number - 1]} #{line_helper(number - 1)}"
       end
+    end
+
+    def randomize_phrases
+      
     end
 end
 
