@@ -23,7 +23,7 @@ class House
   end
   
   def recite
-    1.upto(12).map { |n| line(n) }.join("\n")
+    1.upto(phrases.length).map { |n| line(n) }.join("\n")
   end
 
   def line(number)
