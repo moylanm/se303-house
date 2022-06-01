@@ -25,7 +25,7 @@ class House
   end
 
   def line(number)
-    "This is #{line_helper(number)}.\n"
+    "#{pirate ? "Thar be" : "This is"} #{line_helper(number)}.\n"
   end
 
   private
