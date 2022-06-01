@@ -19,7 +19,7 @@ class House
 
   def initialize(pirate = false, random = false)
     @pirate = pirate
-    @phrases = random ? randomize_phrases : @@phrases
+    @phrases = random ? randomized_phrases : @@phrases
   end
   
   def recite
@@ -40,8 +40,11 @@ class House
       end
     end
 
-    def randomize_phrases
-      
+    def randomized_phrases
+      list = @@phrases.drop(1)
+      list = list.shuffle
+      list.insert(0, @@phrases[0])
+      list
     end
 end
 
