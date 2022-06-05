@@ -1,6 +1,10 @@
 class House
 
   @@phrases = {
+    prefix: [
+      "",
+      "",
+    ],
     subjects: [
       "malt that ",
       "rat that ",
@@ -62,7 +66,7 @@ class House
       subjects
       .zip(verbs)
       .map { |phrase| phrase.join }
-      .insert(0, ["", ""])
+      .insert(0, @@phrases[:prefix])
       .flatten
     end
 end
