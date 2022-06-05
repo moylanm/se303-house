@@ -55,16 +55,16 @@ class House
     end
 
     def original_phrases
-      @@phrases[:subjects]
-      .zip(@@phrases[:verbs])
-      .map { |phrase| phrase.join }
-      .insert(0, @@phrases[:prefix])
-      .flatten
+      integrate_arrays(@@phrases[:subjects], @@phrases[:verbs])
     end
 
     def randomized_phrases
-      @@phrases[:subjects].shuffle
-      .zip(@@phrases[:verbs].shuffle)
+      integrate_arrays(@@phrases[:subjects].shuffle, @@phrases[:verbs].shuffle)
+    end
+
+    def integrate_arrays(subjects, verbs)
+      subjects
+      .zip(verbs)
       .map { |phrase| phrase.join }
       .insert(0, @@phrases[:prefix])
       .flatten
