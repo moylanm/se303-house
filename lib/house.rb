@@ -1,49 +1,67 @@
 class House
 
-  @@phrases = [
-    "the house that Jack built",
-    "the malt that lay in",
-    "the rat that ate",
-    "the cat that killed",
-    "the dog that worried",
-    "the cow with the crumpled horn that tossed",
-    "the maiden all forlorn that milked",
-    "the man all tattered and torn that kissed",
-    "the priest all shaven and shorn that married",
-    "the rooster that crowed in the morn that woke",
-    "the farmer sowing his corn that kept",
-    "the horse and the hound and the horn that belonged to",
-  ]
+  @@phrases = {
+    subjects: [
+      "",
+      "",
+      "malt that ",
+      "rat that ",
+      "cat that ",
+      "dog that ",
+      "cow with the crumpled horn that ",
+      "maiden all forlorn that ",
+      "man all tattered and torn that ",
+      "priest all shaven and shorn that ",
+      "rooster that crowed in the morn that ",
+      "farmer sowing his corn that ",
+      "horse and the hound and the horn that ",
+    ],
+    verbs: [
+      "",
+      "",
+      "lay in the ",
+      "ate the ",
+      "killed the ",
+      "worried the ",
+      "tossed the ",
+      "milked the ",
+      "kissed the ",
+      "married the ",
+      "woke the ",
+      "kept the ",
+      "belonged to the ",
+    ]
+  }
 
   attr_reader :pirate, :phrases
 
   def initialize(pirate = false, random = false)
     @pirate = pirate
-    @phrases = random ? randomized_phrases : @@phrases
+    @phrases = random ? randomized_phrases : original_phrases
   end
   
   def recite
-    1.upto(phrases.length).map { |n| line(n) }.join("\n")
+    1.upto(12).map { |n| line(n) }.join("\n")
   end
 
   def line(number)
-    "#{pirate ? "Thar be" : "This is"} #{line_helper(number)}.\n"
+    "#{pirate ? "Thar be" : "This is"} the #{line_helper(number)}house that Jack built.\n"
   end
 
   private
 
     def line_helper(number)
-      if number == 1
-        phrases[number - 1]
-      else
-        "#{phrases[number - 1]} #{line_helper(number - 1)}"
-      end
+      number.downto(1).collect { |i| phrases[i] }.join("")
+    end
+
+    def original_phrases
+      @@phrases[:subjects]
+      .zip(@@phrases[:verbs])
+      .map { |phrase| phrase.join }
     end
 
     def randomized_phrases
-      @@phrases.drop(1)
-      .shuffle
-      .insert(0, @@phrases[0])
+      
     end
 end
 
