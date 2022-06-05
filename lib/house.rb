@@ -1,9 +1,11 @@
 class House
 
   @@phrases = {
+    prefix: [
+      "",
+      "",
+    ],
     subjects: [
-      "",
-      "",
       "malt that ",
       "rat that ",
       "cat that ",
@@ -17,8 +19,6 @@ class House
       "horse and the hound and the horn that ",
     ],
     verbs: [
-      "",
-      "",
       "lay in the ",
       "ate the ",
       "killed the ",
@@ -58,10 +58,16 @@ class House
       @@phrases[:subjects]
       .zip(@@phrases[:verbs])
       .map { |phrase| phrase.join }
+      .insert(0, @@phrases[:prefix])
+      .flatten
     end
 
     def randomized_phrases
-      
+      @@phrases[:subjects].shuffle
+      .zip(@@phrases[:verbs].shuffle)
+      .map { |phrase| phrase.join }
+      .insert(0, @@phrases[:prefix])
+      .flatten
     end
 end
 
