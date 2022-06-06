@@ -123,4 +123,9 @@ Thar be the horse and the hound and the horn that belonged to the farmer sowing 
     assert_equal expected, House.new(pirate = true).recite
   end
   
+  def test_line_12_random
+    srand(1234)
+    expected = "This is the dog that kept the man all tattered and torn that kissed the maiden all forlorn that woke the cow with the crumpled horn that lay in the priest all shaven and shorn that tossed the malt that milked the rat that married the horse and the hound and the horn that ate the farmer sowing his corn that killed the cat that belonged to the rooster that crowed in the morn that worried the house that Jack built.\n"
+    assert_equal expected, House.new(pirate = false, random = true).line(12)
+  end
 end
